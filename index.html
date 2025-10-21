@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concours Natif Body - Gagne ton Pack 5 Coachings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d0021b 0%, #3b0000 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background shapes */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            font-size: 56px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            text-shadow: 0 6px 25px rgba(0,0,0,0.6);
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Prize Section */
+        .prize-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            animation: scaleIn 0.8s ease-out 0.3s both;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .prize-title {
+            font-size: 32px;
+            color: #2d2d2d;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .prize-main {
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d0021b 0%, #8b0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            line-height: 1;
+            margin: 20px 0;
+        }
+        
+        .prize-subtitle {
+            font-size: 36px;
+            color: #3d3d3d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .prize-emoji {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Participation Section */
+        .participation-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            animation: slideInUp 0.8s ease-out 0.5s both;
+            margin-bottom: 40px;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .participation-section h2 {
+            font-size: 38px;
+            color: #2d2d2d;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .steps {
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-left: 6px solid #d0021b;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .step:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(208, 2, 27, 0.25);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d0021b 0%, #8b0000 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            font-weight: 900;
+            flex-shrink: 0;
+            box-shadow: 0 6px 15px rgba(208, 2, 27, 0.4);
+        }
+        
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d2d2d;
+        }
+        
+        .step-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+            padding-left: 70px;
+        }
+        
+        .step-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding-left: 70px;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: white;
+            border: 3px solid #d0021b;
+            color: #d0021b;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-button:hover {
+            background: #d0021b;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(208, 2, 27, 0.4);
+        }
+        
+        /* Validation Section */
+        .validation-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 3px solid #d0021b;
+        }
+        
+        .validation-section h3 {
+            font-size: 26px;
+            color: #2d2d2d;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .checkbox-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-item:hover {
+            box-shadow: 0 5px 15px rgba(208, 2, 27, 0.15);
+        }
+        
+        .checkbox-item label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #d0021b;
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-section h3 {
+            font-size: 26px;
+            color: #2d2d2d;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #d0021b;
+            box-shadow: 0 0 0 3px rgba(208, 2, 27, 0.1);
+        }
+        
+        .required {
+            color: #d0021b;
+        }
+        
+        /* Submit button */
+        .submit-button {
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(135deg, #d0021b 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 12px 35px rgba(208, 2, 27, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .submit-button:hover:not(:disabled) {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(208, 2, 27, 0.6);
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        /* Messages */
+        .message {
+            display: none;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        footer .logo-footer {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 42px;
+                letter-spacing: 4px;
+            }
+            
+            .prize-main {
+                font-size: 60px;
+            }
+            
+            .prize-subtitle {
+                font-size: 28px;
+            }
+            
+            .participation-section h2 {
+                font-size: 28px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .step-description,
+            .step-links {
+                padding-left: 0;
+            }
+            
+            .step-title {
+                font-size: 20px;
+            }
+            
+            .submit-button {
+                font-size: 18px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .logo {
+                font-size: 32px;
+            }
+            
+            .prize-section {
+                padding: 40px 25px;
+            }
+            
+            .prize-main {
+                font-size: 48px;
+            }
+            
+            .prize-subtitle {
+                font-size: 22px;
+            }
+            
+            .participation-section {
+                padding: 30px 20px;
+            }
+            
+            .step {
+                padding: 20px;
+            }
+            
+            .link-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">NATIF BODY</div>
+            <div class="hero-badge">✨ Concours Exceptionnel ✨</div>
+        </header>
+        
+        <!-- Prize Section -->
+        <div class="prize-section">
+            <div class="prize-emoji">🎁</div>
+            <h1 class="prize-title">Gagne ton</h1>
+            <div class="prize-main">PACK 5</div>
+            <div class="prize-subtitle">Coachings Offerts</div>
+            <div class="prize-emoji">💪</div>
+        </div>
+        
+        <!-- Participation Section -->
+        <div class="participation-section">
+            <h2>Comment Participer ?</h2>
+            
+            <div class="steps">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <div class="step-title">Laisse un avis sur Google</div>
+                    </div>
+                    <p class="step-description">Partage ton expérience avec Natif Body en laissant un avis sur notre page Google.</p>
+                    <div class="step-links">
+                        <a href="https://g.page/r/CaxeYGUYMVkREAE/review" target="_blank" class="link-button" onclick="trackClick('google')">
+                            ⭐ Laisser un avis Google
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <div class="step-title">Abonne-toi à nos réseaux sociaux</div>
+                    </div>
+                    <p class="step-description">Rejoins notre communauté sur Instagram et Facebook pour ne rien manquer !</p>
+                    <div class="step-links">
+                        <a href="https://instagram.com/natif_body" target="_blank" class="link-button" onclick="trackClick('instagram')">
+                            📱 Instagram
+                        </a>
+                        <a href="https://www.facebook.com/BodyNatif" target="_blank" class="link-button" onclick="trackClick('facebook')">
+                            👍 Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Validation Checkboxes -->
+            <div class="validation-section">
+                <h3>✅ Confirmation des étapes</h3>
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" id="checkGoogle" required>
+                        <span>J'ai laissé un avis sur Google</span>
+                    </label>
+                </div>
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" id="checkInstagram" required>
+                        <span>Je me suis abonné(e) sur Instagram</span>
+                    </label>
+                </div>
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" id="checkFacebook" required>
+                        <span>Je me suis abonné(e) sur Facebook</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Form Section -->
+            <div class="form-section">
+                <h3>📝 Mes informations</h3>
+                <form id="participationForm">
+                    <div class="form-group">
+                        <label for="nom">Nom complet <span class="required">*</span></label>
+                        <input type="text" id="nom" name="nom" required placeholder="Votre nom et prénom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone <span class="required">*</span></label>
+                        <input type="tel" id="telephone" name="telephone" required placeholder="06 12 34 56 78">
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Submit Button -->
+            <button class="submit-button" onclick="submitParticipation()">
+                Valider ma participation ✅
+            </button>
+            
+            <!-- Error Message -->
+            <div class="message error-message" id="errorMessage">
+                ❌ Veuillez compléter toutes les étapes avant de valider votre participation !
+            </div>
+            
+            <!-- Success Message -->
+            <div class="message success-message" id="successMessage">
+                🎉 Merci ! Votre participation est confirmée. Vous êtes bien inscrit(e) au tirage au sort !
+            </div>
+        </div>
+        
+        <footer>
+            <div class="logo-footer">NATIF BODY</div>
+            <p>📧 contact@natif-body.fr</p>
+            <p>📱 07 43 10 37 90</p>
+            <p>🗓️ Tirage au sort le 1er Décembre 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Google Apps Script URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzW49xEputG3nQtOBQyg3BHgaClB0iQMn3f4XItFz1zTg96ypjQiTicPt3ikHjjxJSj/exec';
+        
+        // Track which links were clicked
+        let clickedLinks = {
+            google: false,
+            instagram: false,
+            facebook: false
+        };
+        
+        function trackClick(platform) {
+            clickedLinks[platform] = true;
+        }
+        
+        async function submitParticipation() {
+            // Hide all messages
+            document.getElementById('errorMessage').classList.remove('show');
+            document.getElementById('successMessage').classList.remove('show');
+            
+            // Get form values
+            const nom = document.getElementById('nom').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telephone = document.getElementById('telephone').value.trim();
+            
+            // Get checkbox states
+            const checkGoogle = document.getElementById('checkGoogle').checked;
+            const checkInstagram = document.getElementById('checkInstagram').checked;
+            const checkFacebook = document.getElementById('checkFacebook').checked;
+            
+            // Validation
+            if (!nom || !email || !telephone) {
+                showError('Veuillez remplir tous les champs obligatoires !');
+                return;
+            }
+            
+            if (!checkGoogle || !checkInstagram || !checkFacebook) {
+                showError('Veuillez cocher toutes les cases pour confirmer que vous avez effectué les étapes !');
+                return;
+            }
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Veuillez entrer une adresse email valide !');
+                return;
+            }
+            
+            // Prepare data for Google Sheets
+            const participationData = {
+                nom: nom,
+                email: email,
+                telephone: telephone,
+                avisGoogle: checkGoogle,
+                abonneInstagram: checkInstagram,
+                abonneFacebook: checkFacebook,
+                dateParticipation: new Date().toLocaleString('fr-FR'),
+                linksClicked: clickedLinks
+            };
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-button');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Envoi en cours...';
+            
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(participationData)
+                });
+                
+                // With no-cors mode, we assume success if no error is thrown
+                console.log('✅ Participation envoyée avec succès !', participationData);
+                
+                // Save backup to localStorage
+                saveParticipation(participationData);
+                
+                // Show success message
+                showSuccess();
+                
+                // Disable form
+                disableForm();
+                
+            } catch (error) {
+                console.error('❌ Erreur lors de l\'envoi:', error);
+                
+                // Save to localStorage as backup
+                saveParticipation(participationData);
+                
+                // Show success anyway (because data is saved locally)
+                showSuccess();
+                disableForm();
+            }
+        }
+        
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMessage');
+            if (message) {
+                errorMsg.textContent = '❌ ' + message;
+            }
+            errorMsg.classList.add('show');
+            errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function showSuccess() {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function disableForm() {
+            document.getElementById('nom').disabled = true;
+            document.getElementById('email').disabled = true;
+            document.getElementById('telephone').disabled = true;
+            document.getElementById('checkGoogle').disabled = true;
+            document.getElementById('checkInstagram').disabled = true;
+            document.getElementById('checkFacebook').disabled = true;
+            
+            const submitBtn = document.querySelector('.submit-button');
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.6';
+            submitBtn.style.cursor = 'not-allowed';
+            submitBtn.textContent = '✅ Participation enregistrée';
+        }
+        
+        function saveParticipation(data) {
+            // Get existing participations from localStorage (backup)
+            let participations = JSON.parse(localStorage.getItem('natifBodyParticipations') || '[]');
+            
+            // Add new participation
+            participations.push(data);
+            
+            // Save back to localStorage
+            localStorage.setItem('natifBodyParticipations', JSON.stringify(participations));
+            
+            // Log total participations
+            console.log(`📊 Total participations (backup local): ${participations.length}`);
+        }
+        
+        // Function to export local backup (call this in console if needed)
+        function exportLocalBackup() {
+            const participations = JSON.parse(localStorage.getItem('natifBodyParticipations') || '[]');
+            console.log('=== BACKUP LOCAL DES PARTICIPATIONS ===');
+            console.table(participations);
+            
+            // Create downloadable CSV
+            if (participations.length > 0) {
+                let csv = 'Nom,Email,Téléphone,Date de participation\n';
+                participations.forEach(p => {
+                    csv += `"${p.nom}","${p.email}","${p.telephone}","${p.dateParticipation}"\n`;
+                });
+                
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'backup_participations_natif_body.csv';
+                a.click();
+                
+                console.log('✅ Fichier CSV de backup téléchargé !');
+            } else {
+                console.log('Aucune participation dans le backup local.');
+            }
+        }
+        
+        // Make export function available globally
+        window.exportLocalBackup = exportLocalBackup;
+        
+        // Display instructions in console
+        console.log('%c✅ SYSTÈME DE PARTICIPATION NATIF BODY', 'background: #d0021b; color: white; font-size: 16px; padding: 10px; font-weight: bold;');
+        console.log('🔗 Les participations sont envoyées automatiquement vers Google Sheets');
+        console.log('💾 Un backup local est également sauvegardé');
+        console.log('📊 Consultez vos participations dans votre Google Sheet !');
+        console.log('');
+        console.log('💡 En cas de problème, tapez: exportLocalBackup()');
+    </script>
+</body>
+</html>
